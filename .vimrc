@@ -1,5 +1,14 @@
 execute pathogen#infect()
 
+" vim-commentary
+" vim-easyalign
+" vim-peekaboo
+" vim-pencil
+" vim-sneak
+" vim-surround
+" vim-tradewinds
+" vimagit
+
 " general settings {
 filetype plugin indent on
 syntax on
@@ -128,4 +137,53 @@ highlight! User4 ctermfg=7 ctermbg=2 cterm=bold
 highlight! User5 ctermfg=7 ctermbg=5 cterm=bold
 highlight! User6 ctermfg=15 ctermbg=8
 highlight! User7 ctermfg=7 ctermbg=9
+" }
+
+" plugin settings {
+" easyalign {{
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+" }}
+
+" magit {{
+let g:magit_show_magit_mapping = '<leader>m'
+let g:magit_stage_file_mapping = 'f'
+let g:magit_stage_hunk_mapping = 's'
+let g:magit_stage_line_mapping = 'l'
+let g:magit_mark_line_mapping = 'm'
+let g:magit_commit_mapping = 'co'
+let g:magit_commit_amend_mapping = 'ca'
+let g:magit_commit_fixup_mapping = 'cf'
+let g:magit_close_commit_mapping = 'cc'
+let g:magit_reload_mapping = 'r'
+let g:magit_edit_mapping = 'e'
+
+let g:magit_git_cmd = 'git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
+let g:magit_jump_next_hunk = 'n'
+let g:magit_jump_prev_hunk = 'p'
+
+let g:magit_ignore_mapping = "<Nop>"
+let g:magit_discard_hunk = 'dd'
+" }}
+
+" peekaboo {{
+let g:peekaboo_window = 'vert bo 40new'
+" }}
+
+" pencil {{
+let g:pencil#autoformat = 1
+let g:pencil#textwidth = 79
+let g:pencil#joinspaces = 0
+let g:pencil#cursorwrap = 0
+let g:pencil#conceallevel = 0
+
+augroup pencil
+    autocmd!
+    autocmd FileType tex call pencil#init() | set formatoptions-=n
+augroup END
+
+nnoremap <silent> <C-h> :<C-u>PFormatToggle<CR>
+inoremap <silent> <C-h> <C-o>:PFormatToggle<CR>
+" }}
 " }
