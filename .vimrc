@@ -51,6 +51,7 @@ nnoremap <silent> <C-g> :let _s=@/ <Bar> :%s/\s\+$//e <Bar>
         \ :let @/=_s <Bar> :nohl <Bar> :unlet _s<CR>
 nnoremap <silent> <C-l> :nohlsearch<C-r>=has('diff')?' <Bar>
         \ diffupdate':''<CR><CR><C-l>
+nnoremap <silent> @R :set operatorfunc=util#repeat<CR>g@
 
 nnoremap ]b :bnext<CR>
 nnoremap [b :bprev<CR>
@@ -59,6 +60,9 @@ nnoremap [l :cprev<CR>
 nnoremap ]t :tabn<CR>
 nnoremap [t :tabp<CR>
 
+nnoremap <silent> gb :<C-u>call util#break()<CR>
+nnoremap <silent> gk :<C-u>call util#next_indent(v:count1, -1)<CR>
+nnoremap <silent> gj :<C-u>call util#next_indent(v:count1, 1)<CR>
 nnoremap Q @q
 nnoremap Y y$
 
@@ -72,6 +76,7 @@ nnoremap <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 inoremap <C-u> <C-g>u<C-u>
 
 xnoremap . :normal .<CR>
+xnoremap @ :<C-u>call util#repeat()<CR>
 
 cnoremap <C-a> <Home>
 
@@ -84,6 +89,12 @@ command! -nargs=1 Count execute printf('%%s/%s//gn', escape(<q-args>, '/'))
 " }
 
 " autocommands {
+augroup guess
+    autocmd!
+    autocmd StdinReadPost,FilterReadPost,FileReadPost,BufReadPost
+            \ * call start#guess()
+augroup END
+
 augroup closeqf
     autocmd!
     autocmd BufWinEnter quickfix nnoremap <silent> <buffer>
