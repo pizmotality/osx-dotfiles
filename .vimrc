@@ -145,6 +145,80 @@ augroup ftvim
 augroup END
 " }
 
+" text objects {
+" cancel object {{
+noremap <Plug>(EmptyObject) <nop>
+inoremap <expr> <Plug>(EmptyObject) exists('#emptyobj')?"\<esc>":''
+" }}
+
+" buffer object {{
+xnoremap i% GoggV
+onoremap i% :normal vi%<CR>
+" }}
+
+" fold object {{
+xnoremap iz :<C-u>silent! normal! [zV]z<CR>
+onoremap iz :normal viz<CR>
+" }}
+
+" indent object {{
+xnoremap <silent> ii :<C-u>call textobj#indent('>=', 1, line("'<"), line("'>"), 0, 0)<CR>
+onoremap <silent> ii :<C-u>call textobj#indent('>=', 1, line('.'), line('.'), 0, 0)<CR>
+xnoremap <silent> ai :<C-u>call textobj#indent('>=', 1, line("'<"), line("'>"), -1, 1)<CR>
+onoremap <silent> ai :<C-u>call textobj#indent('>=', 1, line('.'), line('.'), -1, 1)<CR>
+xnoremap <silent> iI :<C-u>call textobj#indent('==', 0, line("'<"), line("'>"), 0, 0)<CR>
+onoremap <silent> iI :<C-u>call textobj#indent('==', 0, line('.'), line('.'), 0, 0)<CR>
+" }}
+
+" comment object {{
+xmap <silent> ic :<C-u>call textobj#comment(1)<CR><Plug>(EmptyObject)
+omap <silent> ic :<C-u>call textobj#comment(0)<CR><Plug>(EmptyObject)
+" }}
+
+" line object {{
+xnoremap il g_o^
+onoremap il :normal vil<CR>
+xnoremap al $o0
+onoremap al :normal val<CR>
+" }}
+
+" continuous line object {{
+xnoremap <silent> iv :<C-u>
+        \ :if search('\%(^\\|[^\\]\)\s*$', 'bW') <Bar> :normal! j<CR> <Bar>
+        \ :else <Bar> :normal! ^<CR> <Bar> :endif <Bar> :
+        \ let spos = getpos('.')[1:2] <Bar>
+        \ let epos = searchpos('\%(^\\|[^\\]\)\s*$', 'cW') <Bar>
+        \ call textobj#select(spos, epos)<CR> $
+onoremap <silent> iv :normal viv<CR>
+xmap <silent> av ivV
+omap <silent> av :normal vav<CR>
+" }}
+
+" path object {{
+xnoremap <silent> if :<C-u>
+        \ let epos = searchpos('\(\/\([0-9a-zA-Z_\-\.]\+\)\)\+', 'ceW', line('.')) <Bar>
+        \ if epos == [0, 0] <Bar>
+        \ let epos = searchpos('\(\/\([0-9a-zA-Z_\-\.]\+\)\)\+', 'bceW', line('.')) <Bar>
+        \ endif <Bar>
+        \ let spos = searchpos('\f\+', 'bcW', line('.')) <Bar>
+        \ call textobj#select(spos, epos)<CR>
+onoremap <silent> if :normal vif<CR>
+" }}
+
+" search pattern object {{
+xnoremap <silent> i/ :<C-u>
+        \ let spos = searchpos(@\, 'c') <Bar>
+        \ let epos = searchpos(@\, 'ce') <Bar>
+        \ :call textobj#select(spos, epos)<CR>
+onoremap <silent> i/ :normal vi/<CR>
+xnoremap <silent> i? :<C-u>
+        \ let spos = searchpos(@\, 'bc') <Bar>
+        \ let epos = searchpos(@\, 'ce') <Bar>
+        \ :call textobj#select(spos, epos)<CR>
+onoremap <silent> i? :normal vi?<CR>
+" }}
+" }
+
 " statusline {
 highlight! User1 ctermfg=7 ctermbg=6 cterm=bold
 highlight! User2 ctermfg=7 ctermbg=3 cterm=bold
