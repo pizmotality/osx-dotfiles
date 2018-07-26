@@ -248,7 +248,7 @@ let g:magit_close_commit_mapping = 'cc'
 let g:magit_reload_mapping = 'r'
 let g:magit_edit_mapping = 'e'
 
-let g:magit_git_cmd = 'git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+let g:magit_git_cmd = 'git'
 
 let g:magit_jump_next_hunk = 'n'
 let g:magit_jump_prev_hunk = 'p'
