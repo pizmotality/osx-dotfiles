@@ -287,4 +287,9 @@ augroup END
 nnoremap <silent> <C-h> :<C-u>PFormatToggle<CR>
 inoremap <silent> <C-h> <C-o>:PFormatToggle<CR>
 " }}
+
+" sneak {{
+map <Bslash> <Plug>Sneak_s
+map \| <Plug>Sneak_S
+" }}
 " }
