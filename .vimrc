@@ -289,6 +289,8 @@ inoremap <silent> <C-h> <C-o>:PFormatToggle<CR>
 " }}
 
 " sneak {{
+highlight Sneak ctermbg=9
+
 map <Bslash> <Plug>Sneak_s
 map \| <Plug>Sneak_S
 " }}
