@@ -75,6 +75,8 @@
 /set trigger.color.regex red
 /set trigger.color.replace yellow
 
+/set plugins.var.python.urlserver.color cyan
+
 /set weechat.bar.buflist.size 18
 /set weechat.bar.buflist.size_max 18
 /set weechat.bar.input.size 0
@@ -90,7 +92,9 @@
 /set weechat.color.chat_time_delimiters lightmagenta
 /set weechat.color.input_actions green
 /set weechat.color.status_data_msg *blue
+/set weechat.color.status_data_private brown
 /set weechat.color.status_more *lightmagenta
+/set weechat.color.status_name_ssl brown
 /set weechat.color.status_number *red
 
 /set weechat.look.align_end_of_lines message
