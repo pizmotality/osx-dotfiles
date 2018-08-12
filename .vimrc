@@ -3,7 +3,6 @@ execute pathogen#infect()
 " vim-commentary
 " vim-easyalign
 " vim-peekaboo
-" vim-pencil
 " vim-sneak
 " vim-surround
 " vim-tradewinds
@@ -270,22 +269,6 @@ let g:magit_discard_hunk = 'dd'
 
 " peekaboo {{
 let g:peekaboo_window = 'vert bo 40new'
-" }}
-
-" pencil {{
-let g:pencil#autoformat = 1
-let g:pencil#textwidth = 79
-let g:pencil#joinspaces = 0
-let g:pencil#cursorwrap = 0
-let g:pencil#conceallevel = 0
-
-augroup pencil
-    autocmd!
-    autocmd FileType tex call pencil#init() | set formatoptions-=n
-augroup END
-
-nnoremap <silent> <C-h> :<C-u>PFormatToggle<CR>
-inoremap <silent> <C-h> <C-o>:PFormatToggle<CR>
 " }}
 
 " sneak {{
