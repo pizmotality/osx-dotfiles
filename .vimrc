@@ -149,11 +149,6 @@ augroup status
     autocmd!
     autocmd VimEnter,WinEnter,BufWinEnter * call status#refresh()
 augroup END
-
-augroup ftvim
-    autocmd!
-    autocmd FileType vim let g:vim_indent_cont = &sw * 2
-augroup END
 " }
 
 " text objects {
