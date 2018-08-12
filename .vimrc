@@ -130,12 +130,13 @@ augroup lint
     autocmd QuickFixCmdPost [^l]* cwindow
 augroup END
 
-augroup closeqf
+augroup qfw
     autocmd!
     autocmd BufWinEnter quickfix nnoremap <silent> <buffer>
             \ q :cclose<CR>:lclose<CR>
     autocmd BufEnter * if (winnr('$') == 1 && &buftype ==# 'quickfix') |
             \ bd | q | endif
+    autocmd FileType qf set nobuflisted
 augroup END
 
 augroup git
