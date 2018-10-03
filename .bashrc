@@ -11,6 +11,12 @@ PS1="\[\033[38;5;4m\]┌─[\u@\h] \[\033[38;5;2m\]\W\[\033[38;5;3m\]\$(get_git_
 alias ls='ls --color=auto'
 alias gdf='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
+if [ -t 1 ]; then
+    bind '"\C-f"':shell-forward-word
+    bind '"\C-b"':shell-backward-word
+    bind '"\C-d"':shell-kill-word
+fi
+
 function get_git_branch() {
     if git --version &> /dev/null; then
         # On branches, this will return the branch name
