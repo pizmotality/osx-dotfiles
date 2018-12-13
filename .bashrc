@@ -1,6 +1,8 @@
 PATH="/usr/local/sbin:$PATH"
 PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 
+MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+
 export ARCHFLAGS="-arch x86_64"
 
 export VIRTUAL_ENV_DISABLE_PROMPT=1
