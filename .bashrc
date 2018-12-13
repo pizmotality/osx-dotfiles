@@ -1,5 +1,5 @@
-export PATH="/usr/local/sbin:$PATH"
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+PATH="/usr/local/sbin:$PATH"
+PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 
 export ARCHFLAGS="-arch x86_64"
 
