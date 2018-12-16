@@ -4,7 +4,6 @@ PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
 export ARCHFLAGS="-arch x86_64"
-
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 PS1="\[\033[38;5;4m\]┌─[\u@\h] \[\033[38;5;2m\]\W\[\033[38;5;3m\]\$(get_git_branch)\n\
