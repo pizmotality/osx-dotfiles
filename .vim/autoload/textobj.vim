@@ -46,17 +46,14 @@ endfunction
 function! textobj#comment(vis) abort
     if synIDattr(synID(line('.'), col('.'), 0), 'name') !~? 'comment'
         call textobj#cancel()
-        if a:vis
-            normal! gv
-        endif
+        if a:vis | execute 'normal! gv' | endif
         return
     endif
 
     let origin = line('.')
     let lines = []
     for dir in [-1, 1]
-        let line = origin
-        let line += dir
+        let line = origin + dir
         while line >= 1 && line <= line('$')
             execute 'normal!' line.'G^'
             if synIDattr(synID(line('.'), col('.'), 0), 'name') !~? 'comment'
@@ -64,8 +61,7 @@ function! textobj#comment(vis) abort
             endif
             let line += dir
         endwhile
-        let line -= dir
-        call add(lines, line)
+        call add(lines, line - dir)
     endfor
 
     execute 'normal!' lines[0].'GV'.lines[1].'G'

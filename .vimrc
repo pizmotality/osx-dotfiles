@@ -155,7 +155,7 @@ augroup END
 " text objects {{{
 " cancel object {{{
 noremap <Plug>(EmptyObject) <nop>
-inoremap <expr> <Plug>(EmptyObject) exists('#emptyobj')?"\<esc>":''
+inoremap <expr> <Plug>(EmptyObject) exists('#emptyobj')?"\<Esc>":''
 " }}}
 
 " buffer object {{{
