@@ -18,7 +18,7 @@ colorscheme colours
 
 set encoding=utf-8
 
-set tabstop=4
+set tabstop=8
 set shiftwidth=4
 set smarttab
 set expandtab
@@ -64,8 +64,10 @@ nnoremap <silent> @R :set operatorfunc=util#repeat<CR>g@
 
 nnoremap ]b :bnext<CR>
 nnoremap [b :bprev<CR>
-nnoremap ]l :cnext<CR>
-nnoremap [l :cprev<CR>
+nnoremap ]c :cnext<CR>
+nnoremap [c :cprev<CR>
+nnoremap ]l :lnext<CR>
+nnoremap [l :lprev<CR>
 nnoremap ]t :tabn<CR>
 nnoremap [t :tabp<CR>
 
@@ -75,7 +77,6 @@ nnoremap <silent> gj :<C-u>call util#next_indent(v:count1, 1)<CR>
 nnoremap Q @q
 nnoremap Y y$
 
-nnoremap <leader>d "_d
 nnoremap <leader>q :quit<CR>
 nnoremap <leader>u :update<CR>
 nnoremap <leader>w <C-w>
@@ -187,23 +188,13 @@ xnoremap al $o0
 onoremap al :normal val<CR>
 " }}}
 
-" continuous line object {{{
-xnoremap <silent> iv :<C-u>
-        \ :if search('\%(^\\|[^\\]\)\s*$', 'bW') <Bar> :normal! j<CR> <Bar>
-        \ :else <Bar> :normal! ^<CR> <Bar> :endif <Bar> :
-        \ let spos = getpos('.')[1:2] <Bar>
-        \ let epos = searchpos('\%(^\\|[^\\]\)\s*$', 'cW') <Bar>
-        \ call textobj#select(spos, epos)<CR> $
-onoremap <silent> iv :normal viv<CR>
-xmap <silent> av ivV
-omap <silent> av :normal vav<CR>
-" }}}
-
 " path object {{{
 xnoremap <silent> if :<C-u>
-        \ let epos = searchpos('\(\/\([0-9a-zA-Z_\-\.]\+\)\)\+', 'ceW', line('.')) <Bar>
+        \ let epos = searchpos('\(\/\([0-9a-zA-Z_\-\.]\+\)\)\+',
+        \ 'ceW', line('.')) <Bar>
         \ if epos == [0, 0] <Bar>
-        \ let epos = searchpos('\(\/\([0-9a-zA-Z_\-\.]\+\)\)\+', 'bceW', line('.')) <Bar>
+        \ let epos = searchpos('\(\/\([0-9a-zA-Z_\-\.]\+\)\)\+',
+        \ 'bceW', line('.')) <Bar>
         \ endif <Bar>
         \ let spos = searchpos('\f\+', 'bcW', line('.')) <Bar>
         \ call textobj#select(spos, epos)<CR>
